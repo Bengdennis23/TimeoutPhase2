@@ -23,7 +23,11 @@ slowerGoodbye(); // prints 'bye' after 1750 ms
 ***********************************************************************/
 
 function postpone(cb, delay) {
-  // Your code here 
+  // Returns a function that, when invoked, schedules the callback to be called after the given delay
+  return function() {
+    // Initiates a timeout that will execute the callback after the specified delay
+    setTimeout(cb, delay);
+  };
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
