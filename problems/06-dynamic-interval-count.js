@@ -25,9 +25,25 @@ console.log(timeoutObject); // Timeout { ... }
 ***********************************************************************/
 
 function dynamicIntervalCount(cb, delay, amount) {
-  // Your code here 
+  let count = 0;
+  
+  // Setting the interval with the callback function and delay
+  const interval = setInterval(() => {
+    cb(); // Calling the callback function
+    
+    count++;
+    
+    // If amount is defined and count reaches the amount, clear the interval
+    if (typeof amount === 'number' && count >= amount) {
+      clearInterval(interval); // Clearing the interval
+    }
+  }, delay);
+  
+  // Returning the Timeout object if amount is not provided
+  if (typeof amount !== 'number') {
+    return interval;
+  }
 }
-
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = dynamicIntervalCount;
